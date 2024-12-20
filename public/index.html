@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <script src="/uv/uv.bundle.js"></script>
-        <script src="/uv/uv.config.js"></script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cool Dynamic Webpage</title>
+    <script src="/uv/uv.bundle.js"></script>
+    <script src="/uv/uv.config.js"></script>
 
-        <script>
+    <script>
         if ("serviceWorker" in navigator) {
             window.addEventListener("load", () => {
                 navigator.serviceWorker.register("/uv/sw.js", {
@@ -12,15 +15,68 @@
                 });
             });
         }
-        </script>
+    </script>
 
-        <link rel="stylesheet" href="example.css">
-    </head>
-    <body>
-        <input type="text" id="urlInput" placeholder="Enter URL here">
-        <button id="searchButton">Search Text</button>
+    <link rel="stylesheet" href="example.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-brand">CoolApp</div>
+        <nav class="navbar-links">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#search">Search</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+        <button class="navbar-toggle" id="navbarToggle">&#9776;</button>
+    </header>
 
-        <iframe id="iframeWindow" class="iframeWindow"></iframe>
-    </body>
+    <main>
+        <section id="home" class="section">
+            <h1>Welcome to CoolApp</h1>
+            <p>Your one-stop tool for browsing and interacting dynamically.</p>
+        </section>
+
+        <section id="search" class="section">
+            <h2>Search the Web</h2>
+            <div class="search-container">
+                <input type="text" id="urlInput" placeholder="Enter URL here">
+                <button id="searchButton">Search</button>
+            </div>
+            <iframe id="iframeWindow" class="iframeWindow"></iframe>
+        </section>
+
+        <section id="about" class="section">
+            <h2>About</h2>
+            <p>This app is built to make browsing and searching smoother and more interactive. Explore the world of seamless browsing!</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 CoolApp. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Navbar toggle for mobile view
+        const navbarToggle = document.getElementById("navbarToggle");
+        const navbarLinks = document.querySelector(".navbar-links");
+
+        navbarToggle.addEventListener("click", () => {
+            navbarLinks.classList.toggle("active");
+        });
+
+        // Event listener for search functionality
+        document.getElementById("searchButton").addEventListener("click", () => {
+            const urlInput = document.getElementById("urlInput").value;
+            if (urlInput) {
+                document.getElementById("iframeWindow").src = urlInput.startsWith("http") ? urlInput : `https://${urlInput}`;
+            } else {
+                alert("Please enter a valid URL.");
+            }
+        });
+    </script>
+
     <script src="example.js"></script>
+</body>
 </html>
