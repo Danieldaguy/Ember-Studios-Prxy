@@ -1,50 +1,203 @@
+/* General body styles */
 body {
   background-image: linear-gradient(to top, black, darkgreen);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;
 }
 
-.iframeWindow {
-    background-color: transparent;
-    position: absolute;
-    width: 100vw;
-    height: 90vh;
-    border: 0;
-    padding: 0;
-    margin: 0;
-    left: 0;
-    bottom: 0;
+/* Navbar styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em 1em;
+  background: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
+.navbar-brand {
+  font-size: 1.5em;
+  color: limegreen;
+  font-weight: bold;
+}
+
+.navbar-links ul {
+  list-style: none;
+  display: flex;
+  gap: 1em;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links ul li {
+  position: relative;
+}
+
+.navbar-links ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1em;
+  padding: 0.5em 1em;
+  transition: background 0.3s, color 0.3s;
+}
+
+.navbar-links ul li a:hover {
+  background: limegreen;
+  color: black;
+  border-radius: 5px;
+}
+
+/* Mobile navbar toggle */
+.navbar-toggle {
+  display: none;
+  background: limegreen;
+  border: none;
+  padding: 0.5em 1em;
+  font-size: 1.2em;
+  color: black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.navbar-links.active {
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.9);
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  padding: 1em;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+}
+
+/* Section styles */
+.section {
+  padding: 4em 1em;
+  text-align: center;
+}
+
+.section h1, .section h2 {
+  color: limegreen;
+}
+
+.section p {
+  font-size: 1.2em;
+  color: #ddd;
+}
+
+#search {
+  position: relative;
+  padding-top: 2em;
+}
+
+/* Search bar and button */
 #urlInput {
-    border-radius: 90px;
-    position: absolute;
-    padding: 0em;
-    padding-left: 0.5em;
-    margin: 0;
-    left: 90px;
-    top: 10px;
-    width: 60vw;
-    height: 10vh;
-    border: 0;
-    outline: 0;
-    color: aliceblue;
-    background-color: #25252a;
-    font-size: 5vh;
+  border-radius: 90px;
+  padding: 0.5em 1em;
+  margin: 0;
+  width: 60%;
+  height: 50px;
+  border: 0;
+  outline: 0;
+  color: aliceblue;
+  background-color: #25252a;
+  font-size: 1em;
+  transition: all 0.3s;
+}
+
+#urlInput:focus {
+  background-color: #343434;
+  border: 2px solid limegreen;
 }
 
 #searchButton {
-    position: absolute;
-    margin: 0;
-    right: 20px;
-    top: 10px;
-    width: 20vw;
-    height: 10vh;
-    border-radius: 60px;
-    border: 0;
-    outline: 0;
-    color: #141414;
-    background-color: aliceblue;
-    font-size: 20px;
+  margin-left: 10px;
+  padding: 0.5em 1.5em;
+  border-radius: 30px;
+  border: 0;
+  outline: 0;
+  color: #141414;
+  background-color: aliceblue;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+#searchButton:hover {
+  background-color: limegreen;
+  color: black;
+}
+
+/* Iframe */
+.iframeWindow {
+  background-color: transparent;
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  border: 2px solid limegreen;
+  border-radius: 10px;
+  margin-top: 1em;
+}
+
+/* Footer styles */
+footer {
+  background: rgba(0, 0, 0, 0.9);
+  text-align: center;
+  padding: 1em;
+  color: #bbb;
+  font-size: 0.9em;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section {
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  #urlInput {
+    width: 70%;
+    height: 40px;
+    font-size: 0.9em;
+  }
+
+  #searchButton {
+    padding: 0.4em 1em;
+    font-size: 0.9em;
+  }
 }
